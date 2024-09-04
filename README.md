@@ -47,6 +47,11 @@ This project is inspired by and adapted from the following resources:
 - [Let's build GPT: from scratch, in code, spelled out](https://www.youtube.com/watch?v=kCc8FmEb1nY) by Andrej Karpathy
   - While this video focuses on GPT, it offers valuable insights into transformer architecture and implementation details that were helpful in understanding and adapting the ViT model.
 
+Additional
+
+- [Tiger Video by Shailesh Kashid on Pexels](https://www.pexels.com/video/white-tigers-captive-in-the-zoo-6035932/)
+
+
 ## Additional Resources
 
 For a deeper understanding of Vision Transformers and attention mechanisms, we recommend the following:

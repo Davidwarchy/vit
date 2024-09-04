@@ -672,26 +672,26 @@ def main():
 if __name__ == '__main__':
     main()
 
-#@title Visualize Dataset
-# Show some training images
-visualize_images()
+    #@title Visualize Dataset
+    # Show some training images
+    visualize_images()
 
-#@title Plot training Results
-config, model, train_losses, test_losses, accuracies = load_experiment(f"{exp_name}/")
+    #@title Plot training Results
+    config, model, train_losses, test_losses, accuracies = load_experiment(f"{exp_name}/")
 
-import matplotlib.pyplot as plt
-# Create two subplots of train/test losses and accuracies
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
-ax1.plot(train_losses, label="Train loss")
-ax1.plot(test_losses, label="Test loss")
-ax1.set_xlabel("Epoch")
-ax1.set_ylabel("Loss")
-ax1.legend()
-ax2.plot(accuracies)
-ax2.set_xlabel("Epoch")
-ax2.set_ylabel("Accuracy")
-plt.savefig("metrics.png")
-plt.show()
+    import matplotlib.pyplot as plt
+    # Create two subplots of train/test losses and accuracies
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
+    ax1.plot(train_losses, label="Train loss")
+    ax1.plot(test_losses, label="Test loss")
+    ax1.set_xlabel("Epoch")
+    ax1.set_ylabel("Loss")
+    ax1.legend()
+    ax2.plot(accuracies)
+    ax2.set_xlabel("Epoch")
+    ax2.set_ylabel("Accuracy")
+    plt.savefig("metrics.png")
+    plt.show()
 
-#@title Visualize Attetion
-visualize_attention(model, "attention.png")
+    #@title Visualize Attetion
+    visualize_attention(model, "attention.png")

@@ -132,8 +132,8 @@ def process_video(input_video_path, output_video_path, model, config, device):
 def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     experiment_name = 'vit-with-100-epochs'  # Update this to match your saved model's name
-    input_video_path = 'adolfo.mp4'  # Update this to your input video path
-    output_video_path = 'output_video_with_attention.mp4'
+    input_video_path = 'tyger.mp4'  # Update this to your input video path
+    output_video_path = 'attention.mp4'
     
     # Load the model
     model, config = load_model(experiment_name, device)
