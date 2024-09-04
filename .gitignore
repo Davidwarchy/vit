@@ -1,4 +1,4 @@
 *.mp4
 data/
-experiments/
+# experiments/
 __pycache__/
