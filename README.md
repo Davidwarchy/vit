@@ -2,6 +2,8 @@
 
 ![attention_map](attention.png)
 
+<video controls src="attention.mp4" title="Title"></video>
+
 This project implements a Vision Transformer (ViT) model from scratch and includes a script for visualizing attention on video frames. The implementation is based on the original ViT paper and inspired by various educational resources.
 
 ## Project Structure

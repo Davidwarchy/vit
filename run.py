@@ -91,9 +91,14 @@ def process_video(input_video_path, output_video_path, model, config, device):
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     fps = int(cap.get(cv2.CAP_PROP_FPS))
     
-    # Set up video writer
-    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-    out = cv2.VideoWriter(output_video_path, fourcc, fps, (width, height))
+    # Adjust resolution and frame rate for compression
+    new_width = width // 2  # Reduce width
+    new_height = height // 2  # Reduce height
+    new_fps = fps // 2  # Reduce frame rate
+    
+    # Set up video writer with H.264 codec for better compression
+    fourcc = cv2.VideoWriter_fourcc(*'X264')
+    out = cv2.VideoWriter(output_video_path, fourcc, new_fps, (new_width, new_height))
     
     # Set up image transformation
     transform = transforms.Compose([
@@ -108,14 +113,17 @@ def process_video(input_video_path, output_video_path, model, config, device):
         if not ret:
             break
         
+        # Resize frame to match the new resolution
+        frame_resized = cv2.resize(frame, (new_width, new_height))
+        
         # Preprocess the frame
-        tensor_frame = preprocess_frame(frame, transform)
+        tensor_frame = preprocess_frame(frame_resized, transform)
         
         # Get attention map
         attention_map = get_attention_map(model, tensor_frame, device)
         
         # Apply attention to frame
-        output_frame = apply_attention_to_frame(frame, attention_map)
+        output_frame = apply_attention_to_frame(frame_resized, attention_map)
         
         # Write the frame
         out.write(output_frame)
