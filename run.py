@@ -7,6 +7,28 @@ import matplotlib.pyplot as plt
 from vision_transformers import ViTForClassfication, load_experiment
 import math
 from torch.nn import functional as F
+import os
+import json
+
+def load_experiment(experiment_name, checkpoint_name="model_final.pt", base_dir="experiments"):
+    outdir = os.path.join(base_dir, experiment_name)
+    # Load the config
+    configfile = os.path.join(outdir, 'config.json')
+    with open(configfile, 'r') as f:
+        config = json.load(f)
+    # Load the metrics
+    jsonfile = os.path.join(outdir, 'metrics.json')
+    with open(jsonfile, 'r') as f:
+        data = json.load(f)
+    train_losses = data['train_losses']
+    test_losses = data['test_losses']
+    accuracies = data['accuracies']
+    # Load the model
+    model = ViTForClassfication(config)
+    cpfile = os.path.join(outdir, checkpoint_name)
+    # Use map_location to load the model on CPU if CUDA is not available
+    model.load_state_dict(torch.load(cpfile, map_location=torch.device('cpu')))
+    return config, model, train_losses, test_losses, accuracies
 
 def load_model(experiment_name, device):
     config, model, _, _, _ = load_experiment(experiment_name)

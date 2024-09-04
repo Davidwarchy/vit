@@ -459,7 +459,8 @@ def load_experiment(experiment_name, checkpoint_name="model_final.pt", base_dir=
     # Load the model
     model = ViTForClassfication(config)
     cpfile = os.path.join(outdir, checkpoint_name)
-    model.load_state_dict(torch.load(cpfile))
+    # Use map_location to load the model on CPU if CUDA is not available
+    model.load_state_dict(torch.load(cpfile, map_location=torch.device('cpu')))
     return config, model, train_losses, test_losses, accuracies
 
 
@@ -481,7 +482,7 @@ def visualize_images():
 
 
 @torch.no_grad()
-def visualize_attention(model, output=None, device="cuda"):
+def visualize_attention(model, output=None, device="cpu"):
     """
     Visualize the attention maps of the first 4 images.
     """
