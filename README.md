@@ -2,7 +2,7 @@
 
 ![attention_map](attention.png)
 
-<video controls src="attention.mp4" title="Title"></video>
+<video controls src="attention.mp4" title="Title">Attention Video</video>
 
 This project implements a Vision Transformer (ViT) model from scratch and includes a script for visualizing attention on video frames. The implementation is based on the original ViT paper and inspired by various educational resources.
 
@@ -26,7 +26,7 @@ This project implements a Vision Transformer (ViT) model from scratch and includ
 
 2. Visualize attention on a video:
    ```
-   python video_attention_visualization.py
+   python run.py
    ```
 
    Make sure to update the `experiment_name` and `input_video_path` in the script before running.

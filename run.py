@@ -1,7 +1,7 @@
+import numpy as np
 import torch
 import torchvision.transforms as transforms
 from PIL import Image
-import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 from vision_transformers import ViTForClassfication, load_experiment
